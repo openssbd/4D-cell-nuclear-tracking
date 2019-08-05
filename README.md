@@ -1,5 +1,5 @@
 ## Synopsis
-* This repository containing files and codes for a training course in 4D nuclear tracking and cell dynamics analysis in summer 2019.
+* This repository contains files and codes for a training course in "4D nuclear tracking and cell dynamics analysis" in summer 2019.
 * The course and codes use MATLAB.
 * The aim of this course is to introduce 4D cell tracking and cell dynamics analysis techniques for investigating dynamics of multicellular systems. 
 * The course assumes that the audience do not have prior knowledge of programming. 
