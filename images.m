@@ -21,6 +21,9 @@ size(k_img1)
 
 figure;
 image(k_img1)
+daspect([1,1,1])
+
+
 %%
 whos k_img1
 %%
@@ -42,12 +45,18 @@ disp(maxvalue)
 disp([row, col])
 %%
 k_img1(180:440,185:455,1)
-%%
+% converting rgb to indexed image
 k_img2=rgb2gray(k_img1);
+
+% image scaled colour function; using default colour map
 imagesc(k_img2)
+daspect([1,1,1])
+
 %%
+% using autumn colourmap
 colormap("autumn");
 imagesc(k_img2);
+daspect([1,1,1])
 %%
 % Thresholding
 % display all the pixels that are larger than intensity 64
@@ -59,3 +68,12 @@ imshow(bw(:,:,1))
 bw = k_img1 > 128;
 %%
 imshow(bw(:,:,1))
+%%
+bw2 = k_img2 > 64
+daspect([1,1,1])
+imagesc(bw2)
+daspect([1,1,1])
+
+%%
+colormap(bone)
+daspect([1,1,1])

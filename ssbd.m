@@ -15,7 +15,7 @@ classdef ssbd
             %imshow(rgb);
             %rgb = url;
         end
-        function coords = b5coords(bdmlid, timept, offset, limit)
+        function coords = bd5coords(bdmlid, timept, offset, limit)
             urlbase = 'http://ssbd.qbic.riken.jp/SSBD/api/v3';
             apifunc = 'bd5coords';
             fmt = '?format=json';
@@ -29,6 +29,17 @@ classdef ssbd
             url = sprintf("%s/%s/%s&bdmlID=%s&ts=%d&offset=%d&limit=%d\n", urlbase, apifunc, fmt, bdmlid, timept, offset, limit);
             disp(url);
             coords = webread(url);
+        end
+        function scale = bd5scaleunit(bdmlid)
+            urlbase = 'http://ssbd.qbic.riken.jp/SSBD/api/v3';
+            apifunc = 'bd5scaleunit';
+            fmt = '?format=json';
+            fprintf("bdmlid=%s\n", bdmlid);
+            offset = 0;
+            limit = 1;
+            url = sprintf("%s/%s/%s&bdmlID=%s&offset=%d&limit=%d\n", urlbase, apifunc, fmt, bdmlid, offset, limit);
+            disp(url);
+            scale = webread(url);
         end
     end
 end

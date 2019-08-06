@@ -55,6 +55,12 @@ s = 'GCTAGAATCC'
 s2 = [s 'ATTAGAAACC']
 %%
 s3 = [s2 s]
+%% Relation Expression
+
+a = 3
+a == 3
+%%
+a == 4
 %% Conditions If then else
 
 % Syntax
