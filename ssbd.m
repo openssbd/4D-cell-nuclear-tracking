@@ -40,6 +40,6 @@ classdef ssbd
             url = sprintf("%s/%s/%s&bdmlID=%s&offset=%d&limit=%d\n", urlbase, apifunc, fmt, bdmlid, offset, limit);
             disp(url);
             scale = webread(url);
-        end
+        end 
     end
 end

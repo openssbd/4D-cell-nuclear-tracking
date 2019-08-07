@@ -17,15 +17,11 @@ imshow('k_image.tif')
 k_img1
 %%
 size(k_img1)
-%% 
-
+whos k_img1
+%%
 figure;
 image(k_img1)
 daspect([1,1,1])
-
-
-%%
-whos k_img1
 %%
 % Finding the minumum intensity on Red channel (or whichever as they are of
 % the same value)
@@ -36,7 +32,7 @@ disp(minvalue)
 [row, col] = find(k_img1(:,:,1)==minvalue);
 disp([row, col])
 %%
-k_img1(400:410,430:450,1)
+k_img1(435:439, 110:114,1)
 %%
 maxvalue = max(max(k_img1(:,:,1)))
 disp(maxvalue)
@@ -44,7 +40,7 @@ disp(maxvalue)
 [row, col] = find(k_img1(:,:,1)==maxvalue);
 disp([row, col])
 %%
-k_img1(180:440,185:455,1)
+k_img1(180:185,450:455,1)
 % converting rgb to indexed image
 k_img2=rgb2gray(k_img1);
 

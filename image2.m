@@ -2,7 +2,7 @@
 % Copyright 2019 RIKEN BDR
 % License: GPL v3 https://www.gnu.org/licenses/gpl-3.0.txt 
 %% 
-%% Access the image directly from SSBD database into MATLAB
+%% Access image directly from SSBD database into MATLAB
 
 % Access SSBD and retrieve image id = 1, Z = 30, t = 0
 k_img = ssbd.image(1, 30, 0); 
@@ -33,3 +33,37 @@ scale.meta
 scale.objects
 %%
 scale.objects.xScale
+%% Analysis - plotting proliferation curve of _C. elegans_ by counting the number of nucleus
+% 
+bdmlid = '800faa21-c28c-4b72-bd12-d41f2eed02e8';
+limit = 1;
+tp = 0;
+offset = 0;
+limit = 1;
+no_of_nucleus = [];
+timept = [];
+resultdata = ssbd.bd5coords(bdmlid, tp, offset, limit)
+disp(["tp=" tp]);
+nn = resultdata.meta.total_count;
+while nn > 0
+    no_of_nucleus = [no_of_nucleus nn];
+    timept = [timept tp];
+    tp=tp+1;
+    try
+        resultdata = ssbd.bd5coords(bdmlid, tp, offset, limit);
+        disp(["tp=" tp "nn=" nn]);
+        nn = resultdata.meta.total_count;
+    catch
+        disp("finished")
+        nn = -1;
+    end
+end
+%%
+% disp(timept)
+%%
+figure;
+hold on
+plot(timept, no_of_nucleus);
+hold off;
+xlabel('Time point')
+ylabel('Num of nucleus')
