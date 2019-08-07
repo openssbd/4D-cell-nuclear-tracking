@@ -6,3 +6,7 @@
 * It will introduce the use of the software package MATLAB and general scientific programming. 
 * It will then introduce essential image processing techniques to segment 4D images, labelling interested regions and tracking them over time. 
 * The course will also introduce the use of public database SSBD and to use the images and resources in SSBD for segmentation, tracking and analysis.
+
+## Slide Presentation
+* https://docs.google.com/presentation/d/1uPZyxufGxqSN6x9Y9Rx7wiZ9w9ggw_4UNFCHpyhc8LE/edit?usp=sharing
+
