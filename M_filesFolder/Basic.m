@@ -46,9 +46,18 @@ a(:,3)
 
 save basic.mat
 %%
+% clear the variables in workspace
 clearvars
 %%
+% display vairable a - it does not exist anymore and you will get a error message.
+a
+%%
+% reload all the variables
 load basic.mat
+%%
+% display variable a again
+a
+
 %%
 s = 'GCTAGAATCC'
 %%
@@ -58,6 +67,7 @@ s3 = [s2 s]
 %% Relation Expression
 
 a = 3
+%%
 a == 3
 %%
 a == 4
@@ -71,6 +81,7 @@ a == 4
 % else
 %    statements
 % end
+%%
 
 a = 1;
 if a > 5
@@ -79,14 +90,11 @@ else
     "no"
 end
 %%
-% A bit too difficult - need to introduce the concept of function!
-reply = input("would you like to say yes? (y/n)", 's')
-if strcmp(reply, 'y')
-    disp('You replied yes.')
-    disp(reply)
+a = 10
+if a > 5
+    "yes"
 else
-    disp('You replied no!')
-    disp(reply)
+    "no"
 end
 %% For Loop
 
@@ -97,6 +105,13 @@ end
 %  end
 %
 % Increment the index variable from initVal to endVal by 1, and repeat execution of statements until index is greater than endVal.
+
+% Clear the variables in workspace
+clearvars;
+% reload basic.mat variables into workspace
+load basic.mat
+% show variable a
+a
 
 for i = 1:3
     % print out the a matrix from row 1 till row 3

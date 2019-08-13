@@ -41,6 +41,16 @@ disp(maxvalue)
 disp([row, col])
 %%
 k_img1(180:185,450:455,1)
+%%
+size(k_img1)
+size(k_img1(1,:,1))
+%%
+rowsize = size(k_img1, 1)
+%%
+colsize = size(k_img1, 2)
+%%
+k_img1(rowsize/2, colsize/2, 1)
+%%
 % converting rgb to indexed image
 k_img2=rgb2gray(k_img1);
 
@@ -65,11 +75,19 @@ bw = k_img1 > 128;
 %%
 imshow(bw(:,:,1))
 %%
-bw2 = k_img2 > 64
+% Thresholding at 64
+bw2 = k_img2 > 64;
 daspect([1,1,1])
+%%
 imagesc(bw2)
 daspect([1,1,1])
 
 %%
 colormap(bone)
 daspect([1,1,1])
+%%
+% filter using average on a 30x30 window
+fil = fspecial3('ellipsoid');
+res_img = imfilter(k_img1, fil)
+%%
+imagesc(res_img(:,:,1))

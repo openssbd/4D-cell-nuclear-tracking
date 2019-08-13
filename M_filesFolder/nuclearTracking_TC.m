@@ -69,6 +69,7 @@ end
 combinedImg = [mat2gray(img(:,:,18,18)), mat2gray(denoise(:,:,18,18))];% mat2gray converts image into that with intensity 0-1
 imagesc(combinedImg)
 daspect([1,1,1])
+denoise(:,:,1,10)
 %%
 % % Thresholding
 bw = denoise > 0.6;
@@ -171,6 +172,8 @@ for i = 1:10
 end
 %%
 % Nearest neighbor association
+% The following is to see how the algorithm works. It tries to only
+% calculate 10 time points and display the dividedID.
 time = data(:,4);
 finaltime = max(time)
 for i = 1:10
@@ -285,6 +288,15 @@ int = cat(1, CC.MeanIntensity);
 % Update data
 data = [data, vol, int];% data = x,y,z,t,id,volume,intensity
 %%
+% Calculate solidity
+[r,c,z,t] = size(nuc);
+nuc3 = reshape(nuc, [r,c,z*t]);
+sol = regionprops3(nuc3, 'Solidity');% Not the track
+% Solidity
+sol = cat(1, sol.Solidity);
+% Update data
+data = [data, sol];% data = x,y,z,t,id,volume,intensity
+%%
 % Plot volume
 uniqueIDs = unique(data(:,5));
 figure;
@@ -310,7 +322,19 @@ end
 hold off;
 xlabel('Time (min)')
 ylabel('Intensity (a.u.)')
-
+%%
+% Plot solidity
+uniqueIDs = unique(data(:,5));
+figure;
+hold on
+for i=uniqueIDs'
+    time = data(data(:,5)==i, 4)*0.5;
+    sol = data(data(:,5)==i, 8);
+    plot(time, sol);
+end
+hold off;
+xlabel('Time (min)')
+ylabel('Solidity (a.u.)')
 %%
 %% ---------------------- Visualization ----------------------
 % Visualize trajectories of the nuclei in 2D

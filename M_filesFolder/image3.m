@@ -20,18 +20,6 @@ imagesc(img3);
 daspect([1,1,1]);
 
 %%
-img = [];
-for i = 1:3
-        img{i} = rgb2gray(ssbd.image(img_id, 0, 0));
-        whos img;
-        img_id=img_id+1;
-end
-imgt1 = cat(3, img{:});
-%%
-whos imgt1
-%%
-imagesc(imgt1(:,:,1))
-%%
 % Bashar images in SSBD starting with image_id = 34073.
 % it has 28 stacks.
 % Reading in Bashar slices and convert them into a 4D image stack.
@@ -39,18 +27,18 @@ img_id = 34073;
 img = [];
 imgt =[];
 for t = 1:5
-    for i = 1:28+1
+    for i = 1:28
         img{i} = rgb2gray(ssbd.image(img_id, 0, 0));
         whos img;
         img_id=img_id+1;
     end
         imgt{t} = cat(3, img{:});
 end
+%%
 imgzt = cat(4, imgt{:});
     
 %%
-save("image3.mat");
-%%
 whos imgzt
 %%
+% display the image z = 14 and t = 3
 imagesc(imgzt(:,:,14,3));
